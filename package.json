@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nestjs/mapped-types": "*",
+    "axios": "^0.27.2",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "socket.io-client": "^4.5.2",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
