@@ -1,5 +1,10 @@
+import styled from 'styled-components'
+
+const StyledLayout = styled.div`
+`
+
 const MainLayout = ({ children }) => {
-  return <div>{children}</div>
+  return <StyledLayout>{children}</StyledLayout>
 }
 
 export default MainLayout

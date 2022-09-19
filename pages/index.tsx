@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState, useCallback, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -7,9 +7,25 @@ import Test from '../components/Test'
 import MainLayout from 'components/layout/MainLayout'
 import QR from 'components/QR'
 import { uuid4 } from 'lib/utils'
+import { io } from 'socket.io-client'
+import { ServerStyleSheet } from 'styled-components'
 
 export default function Home() {
   const gameId = useMemo(() => uuid4(), [])
+  const socket = useMemo(() => io('http://localhost:3000'), [])
+  const [connected, setConnected] = useState(false)
+
+  const handleRemoteConnected = useCallback(() => {
+    setConnected(true)
+  }, [])
+
+  useEffect(() => {
+    socket.on('remote-connected', handleRemoteConnected)
+
+    return () => {
+      socket.removeAllListeners()
+    }
+  })
 
   return (
     <div className={styles.container}>
@@ -33,6 +49,8 @@ export default function Home() {
             onDevelopment={true}
           />
         </div>
+
+        {connected && <p>remote connected!</p>}
       </MainLayout>
     </div>
   )
