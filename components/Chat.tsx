@@ -1,25 +1,25 @@
-import react, { useState, useEffect, useCallback } from "react";
-import { io } from "socket.io-client";
+import react, { useState, useEffect, useCallback } from 'react'
+import { io } from 'socket.io-client'
 
-const socket = io("http://localhost:3000/");
+const socket = io('http://localhost:3000')
 
 const Chat = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('')
 
   const handleSubmitNewMessage = useCallback(() => {
-    console.log("handle Send,,, ", input);
-    socket.emit("message", { data: "input" });
-  }, [input]);
+    console.log('handle Send,,, ', input)
+    socket.emit('message', { data: 'input' })
+  }, [input])
 
   const handleNewMessage = useCallback((message) => {
-    console.log("handleNewMessage,,, ", message);
-  }, []);
+    console.log('handleNewMessage,,, ', message)
+  }, [])
 
   useEffect(() => {
-    socket.on("message", ({ data }) => {
-      handleNewMessage(data);
-    });
-  });
+    socket.on('message', ({ data }) => {
+      handleNewMessage(data)
+    })
+  })
 
   return (
     <div>
@@ -30,7 +30,7 @@ const Chat = () => {
       />
       <button onClick={handleSubmitNewMessage}>send</button>
     </div>
-  );
-};
+  )
+}
 
-export default Chat;
+export default Chat

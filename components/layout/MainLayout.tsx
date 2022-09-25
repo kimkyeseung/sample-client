@@ -1,10 +1,15 @@
+import DebugConsole from 'components/DebugConsole'
 import styled from 'styled-components'
 
-const StyledLayout = styled.div`
-`
+const StyledLayout = styled.div``
 
-const MainLayout = ({ children }) => {
-  return <StyledLayout>{children}</StyledLayout>
+const MainLayout = ({ debugItems, children }) => {
+  return (
+    <StyledLayout>
+      {children}
+      <DebugConsole items={debugItems} />
+    </StyledLayout>
+  )
 }
 
 export default MainLayout

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nestjs/mapped-types": "*",
+    "@types/styled-components": "^5.1.26",
     "axios": "^0.27.2",
     "next": "12.3.0",
     "qrcode": "^1.5.1",

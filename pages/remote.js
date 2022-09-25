@@ -14,6 +14,10 @@ export default function Remote() {
 
   useEffect(() => {
     socket.emit('remote-connected')
+
+    return () => {
+      socket.emit('remote-disconnected')
+    }
   })
 
   useEffect(() => {
