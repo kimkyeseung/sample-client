@@ -1,15 +1,12 @@
 import { useState, useCallback, useEffect, useReducer } from 'react'
 import { Action } from 'interfaces'
 
-type Reducer<S, A> = (prevState: S, action: A) => S;
+type Reducer<S, A> = (prevState: S, action: A) => S
 
-const useActionQueue = (reducer, initialState) => {
+const useActionQueue = (reducer: Reducer<object, object>, initialState) => {
   const [queue, setQueue]: [Action[], any] = useState([])
   const [pending, setPending] = useState(false)
-  const [state, dispatch] = useReducer(
-    reducer,
-    initialState
-  )
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
     const action: Action = queue[0]

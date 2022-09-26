@@ -1,15 +1,17 @@
-import React, {
-  useRef,
-  useMemo,
-  useState,
-  useEffect,
-  useCallback
-} from 'react'
+import React, { useRef, useMemo, useState, useEffect, useCallback } from 'react'
 import type { GetServerSideProps, NextPage } from 'next'
 import QRCode from 'qrcode'
 import qs from 'qs'
 
-type Props = { host: string | null }
+type Props = {
+  host?: string | null
+  url?: string
+  query?: object
+  onDevelopment?: boolean
+  value?: string | number
+  isCorrect?: boolean
+  handleSubmit?: Function
+}
 
 const QR = ({
   url,
@@ -20,7 +22,7 @@ const QR = ({
   handleSubmit,
   host,
   ...props
-}) => {
+}: Props) => {
   const ref = useRef()
   const [ready, setReady] = useState(false)
 

@@ -12,6 +12,8 @@ import { io } from 'socket.io-client'
 import { ServerStyleSheet } from 'styled-components'
 import useActionQueue from 'hooks/useActionQueue'
 
+const DEFAULT_LIFE = 3
+
 const initialState = {
   game: {
     level: 0,
