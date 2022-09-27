@@ -137,6 +137,7 @@ export default function Home() {
         </div>
 
         {connected ? <p>remote connected!</p> : <p>remote disconnected...</p>}
+        {process.env.NODE_ENV}
       </MainLayout>
     </div>
   )
