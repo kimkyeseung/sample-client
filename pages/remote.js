@@ -8,7 +8,7 @@ import Controller from 'components/remote/Controller'
 export default function Remote() {
   const router = useRouter()
   const [started, setStarted] = useState(false)
-  const socket = useMemo(() => io('http://localhost:3000'), [])
+  const socket = useMemo(() => io(process.env.REACT_APP_API_URL), [])
 
   const onDevelopment = process.env.NODE_ENV !== 'production'
 

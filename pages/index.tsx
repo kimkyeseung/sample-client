@@ -95,7 +95,7 @@ const levelGenerator = generator()
 
 export default function Home() {
   const gameId = useMemo(() => uuid4(), [])
-  const socket = useMemo(() => io('http://localhost:3000'), [])
+  const socket = useMemo(() => io(process.env.REACT_APP_API_URL), [])
   const [connected, setConnected] = useState(false)
 
   const handleRemoteConnected = useCallback((connected: boolean) => {
